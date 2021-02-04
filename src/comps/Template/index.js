@@ -8,7 +8,7 @@ const Container = styled.div `
 const Template = () =>{
 
     return  <Container>
-                Test
+                Test 2
             </Container>
 }
 
