@@ -106,13 +106,9 @@ justify-content:center;
 `;
 
 
-// const Title = styled.div `
-
-// `;
 
 
-
-const TaskCard = ({TitleText, TimeText, DriverText, VehicleText}) =>{
+const TaskCard = ({onPreview, TitleText, TimeText, DriverText, VehicleText}) =>{
 
     return  <Container>
                 <Title>{TitleText}</Title> 
@@ -134,3 +130,8 @@ TaskCard.defaultProps = {
 }
 
 export default TaskCard;
+
+// TitleText
+// TimeText
+// DriverText
+// VehicleText

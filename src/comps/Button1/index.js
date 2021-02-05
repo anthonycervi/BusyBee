@@ -17,15 +17,15 @@ justify-content:center;
 display:flex;
 `;
 
-const Button1 = ({text}) =>{
+const Button1 = ({ButtonText}) =>{
 
     return  <Container>
-                <Buttontext>{text}</Buttontext>
+                <Buttontext>{ButtonText}</Buttontext>
             </Container>
 }
 
 Button1.defaultProps = {
-text:"Create New Task",
+ButtonText:"Create New Task",
 }
 
 export default Button1;
