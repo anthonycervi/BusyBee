@@ -12,3 +12,13 @@
     border: solid 2px;
     border-color: rgb(238, 238, 238);
 }
+
+.card {
+    transition: opacity 0.5s;
+    opacity: 1;
+  }
+  .card.hide {
+    opacity: 0;
+    pointer-events:none;
+  }
+  

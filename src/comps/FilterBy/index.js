@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div `
-width:100%;
+width:90%;
 
 `;
 
@@ -12,6 +12,16 @@ border:0px;
 height:40px;
 padding-left:10px;
 background-color:#F0F0F2;
+margin-right:7px;
+`;
+
+const Inputdiv2 = styled.input `
+border:0px;
+ width:80%;
+height:40px;
+padding-left:10px;
+background-color:#F0F0F2;
+margin-left:7px;
 `;
 
 const Title = styled.div `
@@ -20,7 +30,6 @@ display: flex;
 flex-direction: column;
 text-align: left;
 justify-content:center;
-// padding-left:10px;
 margin-bottom:5px;
 `;
 
@@ -33,6 +42,14 @@ justify-content:center;
 
 `;
 
+const InputDivRow = styled.div `
+// width:100%;
+display: flex;
+flex-direction: row;
+justify-content:center;
+align-items:center;
+
+`;
 
 // const Title = styled.div `
 
@@ -40,19 +57,21 @@ justify-content:center;
 
 
 
-const Input1 = ({InputTitleText, PlaceholderText}) =>{
+const FilterBy = () =>{
 
     return  <Container>
                 <TitleDiv>
-                    <Title>{InputTitleText}</Title>
-                    <Inputdiv placeholder= {PlaceholderText}/>
+                    <Title>Filter</Title>
+                    <InputDivRow>
+                    <Inputdiv placeholder= "Vehicle"/>
+                    <Inputdiv2 placeholder= "Name"/>
+                    </InputDivRow>
                 </TitleDiv>
             </Container>
 }
 
-    Input1.defaultProps = {
-        InputTitleText:"Title Text",
-        PlaceholderText:"text",
+FilterBy.defaultProps = {
+        text:"text",
 }
 
-export default Input1;
+export default FilterBy;

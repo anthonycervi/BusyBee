@@ -36,7 +36,7 @@ max-width:30px;
 max-height:20px;
 margin:2px;
 `;
-//Default props not required as component is consistent throughout. 
+//Default props not required as component is consistent throughout. / No props required
 const TimeDropDown = () =>{
 
     return  <Container>
