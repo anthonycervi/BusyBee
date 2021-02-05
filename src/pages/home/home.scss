@@ -1,0 +1,14 @@
+.main{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    min-width: 375px;
+    max-width: 375px;
+    min-height: 812px;
+    // max-height: 812px;
+    border-radius: 20px;
+    border: solid 2px;
+    border-color: rgb(238, 238, 238);
+}
