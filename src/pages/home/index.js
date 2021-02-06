@@ -11,15 +11,17 @@ import FilterBy from '../../comps/FilterBy'
 import FadeIn from 'react-fade-in';
 import AddTaskCard from '../../comps/AddTaskCard'
 
-
+//This page emulates a mobile interface
 
 const Home = () =>{
 // Preview / Updates Practices
+//Fake Database with Information on the Title, Driver, Vehicle, etc.
 const fakedb = [
     {
         TitleText:"Take Susie to School",
         DriverText:"Sarah",
-        VehicleText:"Honda Civic"
+        VehicleText:"Honda Civic",
+        TimeText:"9:45AM"
     },
     {
         TitleText:"Take Tim to School",
@@ -57,7 +59,7 @@ const fakedb = [
         VehicleText:"Porsche"
     }
 ]    
-
+//Preview Components on Page; Title, Time, Driver Name, Vehicle Name, Hour,Minute,Meridian: [WORKING]
     const [TitleText,setTitle] = useState([]);
     const [TimeText,setTime] = useState([]);
     const [DriverText,setDriver] = useState([]);
@@ -65,6 +67,11 @@ const fakedb = [
     const [DateText,setDateText] = useState([]);
     const [alldb, setAllDb] = useState([]);
   
+//Async get DB [WILL BE REPLACED WITH REAL DATABASE LINK]
+    const GetDB = async() => {
+        var arr = fakedb.slice(0,4);
+        setAllDb(arr)
+    }
 
     //Handles information from the form to update preview. [ADD TO DB FROM SAM]
     const HandleFormComplete = async (TitleText,TimeText,DriverText,VehicleText,compDate) => {
@@ -74,36 +81,38 @@ const fakedb = [
     setVehicle(VehicleText);
     setDateText(compDate);
     console.log(DateText)
-    setAllDb(arr)
-    var arr = fakedb;
     }
 
-    const onFilterVehicle = (text) => {
-        setAllDb(fakedb.filter((o)=>{
+    //Filter 1 Vehicle, needs to be integrated into real database.
+    const OnFilterVehicle = (text) => {
+        setAllDb(alldb.filter((o)=>{
           return o.VehicleText.includes(text);
         })
         )
       }
 
+    //Filter 1 Name, needs to be integrated into real database.
+    const OnFilterName = (text) => {
+        setAllDb(alldb.filter((o)=>{
+          return o.DriverText.includes(text);
+        })
+        )
+      }
      
-
+    //Will be replaced with real DB async
+      useEffect(()=>{
+        GetDB()
+      },[]);
 
     var left = 0 + 'px';
     var top = 0 + 'px';
     var padding = 0 + 'px';
-
-    //Fake Database with Information on the Title, Driver, Vehicle, etc.
-   
-
-    
-
-
-
-    return <div>
+    return <FadeIn><div>
     <div className="main">
-                <Header ></Header>
+                <Header></Header>
                
-                <FilterBy onFilterVehicle={onFilterVehicle}></FilterBy>
+                <FilterBy onFilterVehicle={OnFilterVehicle}></FilterBy>
+             
               <div className="ScrollDiv">
 
                   {/* Maps out the fake database and assigns those values directly to the comps */}
@@ -113,12 +122,11 @@ const fakedb = [
                         {o.TitleText} - {o.VehicleText} - {o.DriverText}
                     </TaskCard>
                 })}
+                </div > 
+                <div className="Button1">
+                    <Button2 ></Button2>   
+                </div>           
                 </div>
-
-                
-                <Button2></Button2>
-              
-            </div>
 
                     {/* Controls / Fade in animation on the form */}
 
@@ -128,11 +136,7 @@ const fakedb = [
             </div>
             </FadeIn>
             </div>
+            </FadeIn>
 }
 
 export default Home;
-
-// TitleText
-// TimeText
-// DriverText
-// VehicleText

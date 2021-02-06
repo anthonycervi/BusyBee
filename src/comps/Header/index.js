@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Container = styled.div `
+//This comp displays the current date
 
+const Container = styled.div `
+margin-bottom:20px;
 `;
 
 const HeaderDate = styled.h1 `
