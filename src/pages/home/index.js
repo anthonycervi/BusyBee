@@ -14,42 +14,117 @@ import AddTaskCard from '../../comps/AddTaskCard'
 
 
 const Home = () =>{
+// Preview / Updates Practices
+const fakedb = [
+    {
+        TitleText:"Take Susie to School",
+        DriverText:"Sarah",
+        VehicleText:"Honda Civic"
+    },
+    {
+        TitleText:"Take Tim to School",
+        DriverText:"Dad",
+        VehicleText:"Tesla"
+    },
+    {
+        TitleText:"Take Jimmy himmy to School",
+        DriverText:"Henry",
+        VehicleText:"Lambo"
+    },
+    {
+        TitleText:"Take Tom to School",
+        DriverText:"Dave",
+        VehicleText:"Buggy"
+    },
+    {
+        TitleText:"Take Barry B Benson to the Hive",
+        DriverText:"Dad",
+        VehicleText:"Plane"
+    },
+    {
+        TitleText:"Take Bon. Eless Pizza to School",
+        DriverText:"Dave",
+        VehicleText:"Honda Civic"
+    },
+    {
+        TitleText:"Pick up Rob",
+        DriverText:"Sally",
+        VehicleText:"Ferrari"
+    },
+    {
+        TitleText:"Take Tom to Practice",
+        DriverText:"Dave",
+        VehicleText:"Porsche"
+    }
+]    
 
-    const [TitleText,setTitle] = useState([])
-    const [TimeText,setTime] = useState([])
-    const [DriverText,setDriver] = useState([])
-    const [VehicleText,setVehicle] = useState([])
+    const [TitleText,setTitle] = useState([]);
+    const [TimeText,setTime] = useState([]);
+    const [DriverText,setDriver] = useState([]);
+    const [VehicleText,setVehicle] = useState([]);
+    const [DateText,setDateText] = useState([]);
+    const [alldb, setAllDb] = useState([]);
+  
 
-    const HandleFormComplete = async (TitleText,TimeText,DriverText,VehicleText) => {
+    //Handles information from the form to update preview. [ADD TO DB FROM SAM]
+    const HandleFormComplete = async (TitleText,TimeText,DriverText,VehicleText,compDate) => {
     setTitle(TitleText);
     setTime(TimeText);
     setDriver(DriverText);
     setVehicle(VehicleText);
-    console.log("complete");
-    console.log(TitleText);
+    setDateText(compDate);
+    console.log(DateText)
+    setAllDb(arr)
+    var arr = fakedb;
     }
+
+    const onFilterVehicle = (text) => {
+        setAllDb(fakedb.filter((o)=>{
+          return o.VehicleText.includes(text);
+        })
+        )
+      }
+
+     
+
+
     var left = 0 + 'px';
     var top = 0 + 'px';
     var padding = 0 + 'px';
 
+    //Fake Database with Information on the Title, Driver, Vehicle, etc.
+   
+
     
+
+
 
     return <div>
     <div className="main">
                 <Header ></Header>
                
-                <FilterBy></FilterBy>
-              
-                <TaskCard TitleText={TitleText} ></TaskCard>
-           
+                <FilterBy onFilterVehicle={onFilterVehicle}></FilterBy>
+              <div className="ScrollDiv">
+
+                  {/* Maps out the fake database and assigns those values directly to the comps */}
+
+                {fakedb.map(o=>{
+                    return <TaskCard TitleText={o.TitleText} DriverText={o.DriverText} VehicleText={o.VehicleText}>
+                        {o.TitleText} - {o.VehicleText} - {o.DriverText}
+                    </TaskCard>
+                })}
+                </div>
 
                 
                 <Button2></Button2>
               
             </div>
+
+                    {/* Controls / Fade in animation on the form */}
+
             <FadeIn delay={150} transitionDuration={1600}>
             <div className="card" style={{padding, left, top,position:'relative'}}>
-            <AddTaskCard onPreview={HandleFormComplete} TitleText={TitleText} onPress={console.log(TitleText)}></AddTaskCard>
+            <AddTaskCard onPreview={HandleFormComplete} onPress={console.log(TitleText)}></AddTaskCard>
             </div>
             </FadeIn>
             </div>

@@ -57,13 +57,15 @@ align-items:center;
 
 
 
-const FilterBy = () =>{
+const FilterBy = ({onFilterVehicle}) =>{
 
     return  <Container>
                 <TitleDiv>
                     <Title>Filter</Title>
                     <InputDivRow>
-                    <Inputdiv placeholder= "Vehicle"/>
+                    <Inputdiv type="text" onChange={(e)=>{
+      onFilterVehicle(e.target.value)
+    }}placeholder= "Vehicle"/>
                     <Inputdiv2 placeholder= "Name"/>
                     </InputDivRow>
                 </TitleDiv>
@@ -72,6 +74,7 @@ const FilterBy = () =>{
 
 FilterBy.defaultProps = {
         text:"text",
+        
 }
 
 export default FilterBy;
