@@ -21,6 +21,8 @@ flex-direction: column;
 text-align: left;
 justify-content:center;
 padding-left:10px;
+font-weight:bold;
+font-family: Inter;
 `;
 
 const Time = styled.div `
@@ -31,6 +33,7 @@ flex-direction: column;
 text-align: left;
 justify-content:center;
 padding-left:10px;
+font-family: Inter;
 `;
 
 const Driver = styled.div `
@@ -48,6 +51,7 @@ margin-right:7px;
 border-radius:3px;
 padding-left:5px;
 padding-right:5px;
+font-family: Inter;
 `;
 
 const Vehicle = styled.div `
@@ -65,6 +69,7 @@ background-color:#84D6AF;
 border-radius:3px;
 padding-left:5px;
 padding-right:5px;
+font-family: Inter;
 `;
 
 const Edit = styled.img `
@@ -113,7 +118,8 @@ const fakedb = [
     {
         TitleText:"Take Susie to School",
         DriverText:"Sarah",
-        VehicleText:"Honda Civic"
+        VehicleText:"Honda Civic",
+        TimeText:"9:45AM"
     },
     {
         TitleText:"Take Tim to School",
@@ -172,7 +178,7 @@ const TaskCard = ({onPreview, TitleText, TimeText, DriverText, VehicleText, Date
 
 TaskCard.defaultProps = {
     TitleText:"Title text",
-    TimeText:"Time text",
+    TimeText:"8:30AM",
     DriverText:"Driver text",
     VehicleText:"Vehicle text",
     DateProps:"Monday",

@@ -353,7 +353,12 @@ const AddTaskCard = ({onPreview, InputTitle1,InputPlaceholder1,InputTitle2,Input
     const [MeridianTime,setMeridianTime] = useState("")
     const [compDate,setDate] = useState("")
     const [DriverText,setDriver] = useState("")
-    const [VehicleText,setVehicle] = useState("") 
+    const [VehicleText,setVehicle] = useState("")
+
+    const [Colour1,setColour1] = useState("")
+    const [Colour2,setColour2] = useState("") 
+    const [Colour3,setColour3] = useState("") 
+    const [Colour4,setColour4] = useState("")  
     
     return  <Container>
 
@@ -430,10 +435,10 @@ const AddTaskCard = ({onPreview, InputTitle1,InputPlaceholder1,InputTitle2,Input
                 <ColourContainer>
                     <ColourTextDiv>Name</ColourTextDiv>
                     <ColourDiv>
-                        <Blue></Blue>
-                        <Yellow></Yellow>
-                        <Green></Green>
-                        <Red></Red>
+                        <Blue onClick="ChangeColour()">{Colour1}</Blue>
+                        <Yellow>{Colour2}</Yellow>
+                        <Green>{Colour3}</Green>
+                        <Red>{Colour4}</Red>
                     </ColourDiv>
                 </ColourContainer>
 
@@ -447,12 +452,12 @@ const AddTaskCard = ({onPreview, InputTitle1,InputPlaceholder1,InputTitle2,Input
 }
 
 AddTaskCard.defaultProps = {
-InputTitle1:"Default Title 1",
-InputPlaceholder1:"Default placeholder 1",
-InputTitle2:"Default Title 2",
-InputPlaceholder2:"Default 2",
-InputTitle3:"Default Title 3",
-InputPlaceholder3:"Default 3",
+InputTitle1:"Title",
+InputPlaceholder1:"Add title",
+InputTitle2:"Name",
+InputPlaceholder2:"John Doe",
+InputTitle3:"Vehicle",
+InputPlaceholder3:"Honda",
 onPreview:()=>{}
 }
 
