@@ -105,14 +105,62 @@ justify-content:center;
 // padding-left:10px;
 `;
 
+const MainCont = styled.div`
+
+`;
+
+const fakedb = [
+    {
+        TitleText:"Take Susie to School",
+        DriverText:"Sarah",
+        VehicleText:"Honda Civic"
+    },
+    {
+        TitleText:"Take Tim to School",
+        DriverText:"Dad",
+        VehicleText:"Tesla"
+    },
+    {
+        TitleText:"Take Jimmy himmy to School",
+        DriverText:"Henry",
+        VehicleText:"Lambo"
+    },
+    {
+        TitleText:"Take Tom to School",
+        DriverText:"Dave",
+        VehicleText:"Buggy"
+    },
+    {
+        TitleText:"Take Barry B Benson to the Hive",
+        DriverText:"Dad",
+        VehicleText:"Plane"
+    },
+    {
+        TitleText:"Take Bon. Eless Pizza to School",
+        DriverText:"Dave",
+        VehicleText:"Honda Civic"
+    },
+    {
+        TitleText:"Pick up Rob",
+        DriverText:"Sally",
+        VehicleText:"Ferrari"
+    },
+    {
+        TitleText:"Take Tom to Practice",
+        DriverText:"Dave",
+        VehicleText:"Porsche"
+    }
+]
 
 
 
-const TaskCard = ({onPreview, TitleText, TimeText, DriverText, VehicleText}) =>{
+const TaskCard = ({onPreview, TitleText, TimeText, DriverText, VehicleText, DateProps,fakedb}) =>{
+
+
 
     return  <Container>
                 <Title>{TitleText}</Title> 
-                <Time>{TimeText}</Time>
+                <Time>{TimeText} {DateProps}</Time>
                 <FeatureDiv>
                     <Driver>{DriverText}</Driver>
                     <Vehicle>{VehicleText}</Vehicle>
@@ -127,6 +175,8 @@ TaskCard.defaultProps = {
     TimeText:"Time text",
     DriverText:"Driver text",
     VehicleText:"Vehicle text",
+    DateProps:"Monday",
+    fakedb:fakedb
 }
 
 export default TaskCard;

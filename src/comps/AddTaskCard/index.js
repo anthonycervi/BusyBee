@@ -351,10 +351,10 @@ const AddTaskCard = ({onPreview, InputTitle1,InputPlaceholder1,InputTitle2,Input
     const [HourTime,setHourTime] = useState("")
     const [MinuteTime,setMinuteTime] = useState("")
     const [MeridianTime,setMeridianTime] = useState("")
-    const [date,setDate] = useState("")
+    const [compDate,setDate] = useState("")
     const [DriverText,setDriver] = useState("")
     const [VehicleText,setVehicle] = useState("") 
-
+    
     return  <Container>
 
                 <Downarrow src={Image} />
@@ -377,7 +377,8 @@ const AddTaskCard = ({onPreview, InputTitle1,InputPlaceholder1,InputTitle2,Input
                         <DateDiv>
                             <DateContainer>
                                 <LabelDate for="daysofweek">Day</LabelDate>
-                                    <SelectDate className="daysofweek">
+                                    <SelectDate onChange={(e)=>{
+        setDate(e.target.value); }}className="daysofweek">
                                         <OptionDate value = "Monday">Monday</OptionDate>
                                         <OptionDate value = "Tuesday">Tuesday</OptionDate>
                                         <OptionDate value = "Wednesday">Wednesday</OptionDate>
@@ -409,7 +410,8 @@ const AddTaskCard = ({onPreview, InputTitle1,InputPlaceholder1,InputTitle2,Input
                         <InputContainer2>
                             <InputTitleDiv2>
                                 <Test2>{InputTitle2}</Test2>
-                                <Inputdiv2 placeholder= {InputPlaceholder2}/>
+                                <Inputdiv2 placeholder= {InputPlaceholder2} onChange={(e)=>{
+        setDriver(e.target.value); }}/>
                             </InputTitleDiv2>
                         </InputContainer2>
                     </Input1Div>
@@ -418,7 +420,8 @@ const AddTaskCard = ({onPreview, InputTitle1,InputPlaceholder1,InputTitle2,Input
                         <InputContainer3>
                                 <InputTitleDiv3>
                                     <Test3>{InputTitle3}</Test3>
-                                    <Inputdiv3 placeholder= {InputPlaceholder3}/>
+                                    <Inputdiv3 placeholder= {InputPlaceholder3} onChange={(e)=>{
+        setVehicle(e.target.value); }}/>
                                 </InputTitleDiv3>
                         </InputContainer3>
                     </Input2Div>
@@ -435,7 +438,7 @@ const AddTaskCard = ({onPreview, InputTitle1,InputPlaceholder1,InputTitle2,Input
                 </ColourContainer>
 
                 <Buttondiv>
-                    <ButtonContainer onClick={()=>{onPreview(TitleText, TimeText, date, DriverText, VehicleText)}}>
+                    <ButtonContainer onClick={()=>{onPreview(TitleText, compDate, DriverText, VehicleText)}}>
                         <ButtonText>Create New Task</ButtonText>
                     </ButtonContainer>
                 </Buttondiv>
