@@ -74,18 +74,20 @@ const fakedb = [
     }
 
     //Handles information from the form to update preview. [ADD TO DB FROM SAM]
-    const HandleFormComplete = async (TitleText,TimeText,DriverText,VehicleText,compDate) => {
+    const HandleFormComplete = async ({TitleText,TimeText,DriverText,VehicleText,compDate}) => {
     setTitle(TitleText);
     setTime(TimeText);
     setDriver(DriverText);
     setVehicle(VehicleText);
     setDateText(compDate);
-    console.log(DateText)
+    console.log(compDate)
     }
 
     //Filter 1 Vehicle, needs to be integrated into real database.
     const OnFilterVehicle = (text) => {
-        setAllDb(alldb.filter((o)=>{
+        //console.log(text, alldb);
+        setAllDb(fakedb.filter((o)=>{
+            //console.log(o.VehicleText);
           return o.VehicleText.includes(text);
         })
         )
@@ -114,10 +116,10 @@ const fakedb = [
                 <FilterBy onFilterVehicle={OnFilterVehicle}></FilterBy>
              
               <div className="ScrollDiv">
-
+                    <TaskCard DateProps={DateText}> </TaskCard>
                   {/* Maps out the fake database and assigns those values directly to the comps */}
 
-                {fakedb.map(o=>{
+                {alldb.map(o=>{
                     return <TaskCard TitleText={o.TitleText} DriverText={o.DriverText} VehicleText={o.VehicleText}>
                         {o.TitleText} - {o.VehicleText} - {o.DriverText}
                     </TaskCard>
