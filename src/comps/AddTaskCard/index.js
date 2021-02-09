@@ -60,6 +60,12 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 3px 6px rgba(0, 0, 0, 0.2), 0px
 border-radius: 20px;
 display:flex;
 flex-direction:column;
+${props=>props.show?`
+    position:absolute;
+    display:flex;
+    left:0;
+    top:0;
+`: `display:none`}
 `;
 
 const TitleDiv = styled.div`
@@ -345,7 +351,7 @@ display:flex;
 margin-top:25px;
 `;
 
-const AddTaskCard = ({onPreview, InputTitle1,InputPlaceholder1,InputTitle2,InputPlaceholder2,InputTitle3,InputPlaceholder3,}) => {
+const AddTaskCard = ({onPreview, show, InputTitle1,InputPlaceholder1,InputTitle2,InputPlaceholder2,InputTitle3,InputPlaceholder3,}) => {
 
     const [TitleText,setTitle] = useState("")
     const [HourTime,setHourTime] = useState("")
@@ -360,7 +366,7 @@ const AddTaskCard = ({onPreview, InputTitle1,InputPlaceholder1,InputTitle2,Input
     const [Colour3,setColour3] = useState("") 
     const [Colour4,setColour4] = useState("")  
     
-    return  <Container>
+    return  <Container show={show}>
 
                 <Downarrow src={Image} />
 
@@ -383,6 +389,7 @@ const AddTaskCard = ({onPreview, InputTitle1,InputPlaceholder1,InputTitle2,Input
                             <DateContainer>
                                 <LabelDate for="daysofweek">Day</LabelDate>
                                     <SelectDate onChange={(e)=>{
+                                        console.log(e.target.value);
         setDate(e.target.value); }}className="daysofweek">
                                         <OptionDate value = "Monday">Monday</OptionDate>
                                         <OptionDate value = "Tuesday">Tuesday</OptionDate>
@@ -443,7 +450,9 @@ const AddTaskCard = ({onPreview, InputTitle1,InputPlaceholder1,InputTitle2,Input
                 </ColourContainer>
 
                 <Buttondiv>
-                    <ButtonContainer onClick={()=>{onPreview(TitleText, compDate, DriverText, VehicleText)}}>
+                    <ButtonContainer onClick={()=>{
+                        
+                        onPreview({TitleText, compDate, DriverText, VehicleText})}}>
                         <ButtonText>Create New Task</ButtonText>
                     </ButtonContainer>
                 </Buttondiv>
@@ -458,6 +467,7 @@ InputTitle2:"Name",
 InputPlaceholder2:"John Doe",
 InputTitle3:"Vehicle",
 InputPlaceholder3:"Honda",
+show:true,
 onPreview:()=>{}
 }
 
