@@ -45,7 +45,7 @@ display: flex;
 flex-direction: column;
 text-align: left;
 justify-content:center;
-background-color:#A5DAE2;
+background-color:${props => props.namecolor ? props.namecolor : "#d3d3d3"};
 margin-left:0px;
 margin-right:7px;
 border-radius:3px;
@@ -65,7 +65,7 @@ display: flex;
 flex-direction: column;
 text-align: left;
 justify-content:center;
-background-color:#84D6AF;
+background-color:${props => props.vehiclecolor ? props.vehiclecolor : "#d3d3d3"};
 border-radius:3px;
 padding-left:5px;
 padding-right:5px;
@@ -119,7 +119,9 @@ const fakedb = [
         TitleText:"Take Susie to School",
         DriverText:"Sarah",
         VehicleText:"Honda Civic",
-        TimeText:"9:45AM"
+        TimeText:"9:45AM",
+        namecolor:"#0000FF"
+
     },
     {
         TitleText:"Take Tim to School",
@@ -160,16 +162,16 @@ const fakedb = [
 
 
 
-const TaskCard = ({onPreview, TitleText, TimeText, DriverText, VehicleText, DateProps,fakedb}) =>{
+const TaskCard = ({onPreview, TitleText, TimeText, DriverText, VehicleText, DateText,fakedb, HourText,MinuteText,MeridianText, namecolor, vehiclecolor}) =>{
 
 
 
     return  <Container>
                 <Title>{TitleText}</Title> 
-                <Time>{TimeText} {DateProps}</Time>
+                <Time>{HourText}:{MinuteText}{MeridianText} {DateText}</Time>
                 <FeatureDiv>
-                    <Driver>{DriverText}</Driver>
-                    <Vehicle>{VehicleText}</Vehicle>
+                    <Driver namecolor={namecolor}>{DriverText}</Driver>
+                    <Vehicle vehiclecolor={vehiclecolor}>{VehicleText}</Vehicle>
                 </FeatureDiv>
                 <Edit src={Image}/>
                 <Delete src={Image2}/>
@@ -178,11 +180,15 @@ const TaskCard = ({onPreview, TitleText, TimeText, DriverText, VehicleText, Date
 
 TaskCard.defaultProps = {
     TitleText:"Title text",
-    TimeText:"8:30AM",
+    HourText:"8",
+    MinuteText:"30",
+    MeridianText:"AM",
     DriverText:"Driver text",
     VehicleText:"Vehicle text",
-    DateProps:"Monday",
-    fakedb:fakedb
+    DateText:"Monday",
+    fakedb:fakedb,
+    namecolor:"#d3d3d3",
+    vehiclecolor:"#d3d3d3"
 }
 
 export default TaskCard;

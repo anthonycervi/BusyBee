@@ -54,7 +54,7 @@ font-weight:600;
 
 const Container = styled.div`
 width:375px;
-height:512px;
+height:580px;
 background: #FFFFFF;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 3px 6px rgba(0, 0, 0, 0.2), 0px 4px 8px rgba(0, 0, 0, 0.08), 7px 1px 12px rgba(0, 0, 0, 0.04);
 border-radius: 20px;
@@ -63,8 +63,8 @@ flex-direction:column;
 ${props=>props.show?`
     position:absolute;
     display:flex;
-    left:0;
-    top:0;
+    // left:0;
+    // bottom:0;
 `: `display:none`}
 `;
 
@@ -272,7 +272,7 @@ padding-left:10px;
 background-color:#F0F0F2;
 `;
 
-// ------------------------------  Colours  -------------------------------
+// ------------------------------  Colours Name  -------------------------------
 
 const ColourContainer = styled.div `
 // width:90%;
@@ -290,7 +290,7 @@ display:flex;
 justify-content:center;
 text-align:center;
 align-items:center;
-margin-right:15px;
+margin-right:23px;
 `;
 
 const ColourDiv = styled.div `
@@ -307,6 +307,7 @@ width:36px;
 height:30px;
 border-radius:4px;
 margin-right:15px;
+border:${props => props.border ? props.border : "0px solid black"};
 `;
 
 const Yellow = styled.div `
@@ -332,6 +333,67 @@ height:30px;
 border-radius:4px;
 `;
 
+// ------------------------------  Colours Vehicle  -------------------------------
+
+const ColourContainer2 = styled.div `
+// width:90%;
+height:40px;
+display:flex;
+flex-direction:row;
+// background-color:red;
+padding-left:15px;
+margin-top:10px;
+`;
+
+const ColourTextDiv2 = styled.div `
+// background-color:blue;
+display:flex;
+justify-content:center;
+text-align:center;
+align-items:center;
+margin-right:15px;
+`;
+
+const ColourDiv2 = styled.div `
+display:flex;
+flex-direction:row;
+justify-content:center;
+text-align:center;
+align-items:center;
+`;
+
+const Blue2 = styled.div `
+background-color:#A5DAE2;
+width:36px;
+height:30px;
+border-radius:4px;
+margin-right:15px;
+border:${props => props.border ? props.border : "0px solid black"};
+`;
+
+const Yellow2 = styled.div `
+background-color:#DFBF7F;
+width:36px;
+height:30px;
+border-radius:4px;
+margin-right:15px;
+`;
+
+const Green2 = styled.div `
+background-color:#84D6AF;
+width:36px;
+height:30px;
+border-radius:4px;
+margin-right:15px;
+`;
+
+const Red2 = styled.div `
+background-color:#E3959F;
+width:36px;
+height:30px;
+border-radius:4px;
+`;
+
 // ------------------------------  Button  -------------------------------
 
 const ButtonText = styled.div `
@@ -351,7 +413,7 @@ display:flex;
 margin-top:25px;
 `;
 
-const AddTaskCard = ({onPreview, show, InputTitle1,InputPlaceholder1,InputTitle2,InputPlaceholder2,InputTitle3,InputPlaceholder3,}) => {
+const AddTaskCard = ({onPreview, show, border, InputTitle1,InputPlaceholder1,InputTitle2,InputPlaceholder2,InputTitle3,InputPlaceholder3,}) => {
 
     const [TitleText,setTitle] = useState("")
     const [HourTime,setHourTime] = useState("")
@@ -361,6 +423,8 @@ const AddTaskCard = ({onPreview, show, InputTitle1,InputPlaceholder1,InputTitle2
     const [DriverText,setDriver] = useState("")
     const [VehicleText,setVehicle] = useState("")
 
+    const [ColourValue,setColourValue] = useState("")
+    const [VehicleNameColour,setVehicleNameColour] = useState("")
     const [Colour1,setColour1] = useState("")
     const [Colour2,setColour2] = useState("") 
     const [Colour3,setColour3] = useState("") 
@@ -405,9 +469,13 @@ const AddTaskCard = ({onPreview, show, InputTitle1,InputPlaceholder1,InputTitle2
                             <TimeContainer>
                                 <LabelTime for="timeofday">Time</LabelTime>
                                 <TimeInputContainer>
-                                    <InputTime placeholder="00"></InputTime>
-                                    <InputTime placeholder="00"></InputTime>
-                                    <SelectTime className="timeofday">
+                                    <InputTime onChange={(e)=>{
+        setHourTime(e.target.value); }}placeholder="00"></InputTime>
+                                    <InputTime onChange={(e)=>{
+        setMinuteTime(e.target.value); }}placeholder="00"></InputTime>
+                                    <SelectTime className="timeofday" onChange={(e)=>{
+                                        console.log(e.target.value);
+        setMeridianTime(e.target.value); }}className="daysofweek">
                                         <OptionTime value = "AM">AM</OptionTime>
                                         <OptionTime value = "PM">PM</OptionTime>
                                     </SelectTime> 
@@ -442,17 +510,43 @@ const AddTaskCard = ({onPreview, show, InputTitle1,InputPlaceholder1,InputTitle2
                 <ColourContainer>
                     <ColourTextDiv>Name</ColourTextDiv>
                     <ColourDiv>
-                        <Blue onClick="ChangeColour()">{Colour1}</Blue>
-                        <Yellow>{Colour2}</Yellow>
-                        <Green>{Colour3}</Green>
-                        <Red>{Colour4}</Red>
+                        <Blue onClick={()=> {
+                            setColourValue("#A5DAE2");
+                        }}/>
+                        <Yellow  onClick={()=> {
+                            setColourValue("#DFBF7F")
+                        }}>{Colour2}</Yellow>
+                        <Green  onClick={()=> {
+                            setColourValue("#84D6AF")
+                        }}>{Colour3}</Green>
+                        <Red  onClick={()=> {
+                            setColourValue("#E3959F")
+                        }}>{Colour4}</Red>
                     </ColourDiv>
                 </ColourContainer>
+
+                <ColourContainer2>
+                    <ColourTextDiv2>Vehicle</ColourTextDiv2>
+                    <ColourDiv2>
+                        <Blue2 onClick={()=> {
+                            setVehicleNameColour("#A5DAE2");
+                        }}/>
+                        <Yellow2  onClick={()=> {
+                            setVehicleNameColour("#DFBF7F")
+                        }}>{Colour2}</Yellow2>
+                        <Green2  onClick={()=> {
+                            setVehicleNameColour("#84D6AF")
+                        }}>{Colour3}</Green2>
+                        <Red2 onClick={()=> {
+                            setVehicleNameColour("#E3959F")
+                        }}>{Colour4}</Red2>
+                    </ColourDiv2>
+                </ColourContainer2>
 
                 <Buttondiv>
                     <ButtonContainer onClick={()=>{
                         
-                        onPreview({TitleText, compDate, DriverText, VehicleText})}}>
+                        onPreview({TitleText, compDate, DriverText, VehicleText, HourTime, MinuteTime, MeridianTime, ColourValue, VehicleNameColour})}}>
                         <ButtonText>Create New Task</ButtonText>
                     </ButtonContainer>
                 </Buttondiv>
@@ -468,7 +562,9 @@ InputPlaceholder2:"John Doe",
 InputTitle3:"Vehicle",
 InputPlaceholder3:"Honda",
 show:true,
-onPreview:()=>{}
+onPreview:()=>{},
+namecolor:"#F8F8F8",
+border:"0px solid black"
 }
 
 export default AddTaskCard;
