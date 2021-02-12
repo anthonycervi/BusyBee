@@ -92,15 +92,15 @@ const fakedb = [
     const [alldb, setAllDb] = useState([]);
     const [namecolor, setnamecolor] = useState([]);
     const [vehiclecolour, setvehiclecolour] = useState([]);
+    const [respDB, setRespDB] = useState([]);
    
     var ShowTask = false;
   
 //Async get DB [WILL BE REPLACED WITH REAL DATABASE LINK]
-    const GetDB = async() => {
-        var arr = fakedb.slice(0,8);
-        setAllDb(arr)
-    }
-
+    // const GetDB = async() => {
+    //     var arr = fakedb.slice(0,8);
+    //     setAllDb(arr)
+    // }
     //Handles information from the form to update preview. [ADD TO DB FROM SAM]
     const HandleFormComplete = async ({TitleText, HourTime, MinuteTime, MeridianTime, DriverText,VehicleText,compDate, ColourValue, VehicleNameColour}) => {
     setTitle(TitleText);
@@ -115,10 +115,24 @@ const fakedb = [
     setvehiclecolour(VehicleNameColour)
     }
 
+    const GetDB = async() => {
+      var resp = await axios.get("https://comp4130busybee.herokuapp.com/api/tasks")
+      setRespDB(resp.data);
+      var arr = (resp.data.tasks)
+      setAllDb(arr)
+      console.log(resp.data.tasks)
+      }
+
+      const HandlePost = async (TitleText, DateText, DriverText, VehicleText, HourText, MinuteText, MeridianText, namecolor, vehiclecolour) => {
+        var resp = await axios.post("https://comp4130busybee.herokuapp.com/api/tasks", {TitleText:TitleText, DateText:DateText, DriverText:DriverText, VehicleText:VehicleText, HourText:HourText, MinuteText:MinuteText, MeridianText:MeridianText, namecolor:namecolor, vehiclecolour:vehiclecolour});
+        console.log("created", resp.data)
+        GetDB();
+        }
+
     //Filter 1 Vehicle, needs to be integrated into real database.
     const OnFilterVehicle = (text) => {
         //console.log(text, alldb);
-        setAllDb(fakedb.filter((o)=>{
+        setAllDb(alldb.filter((o)=>{
             //console.log(o.VehicleText);
           return o.VehicleText.includes(text);
         })
@@ -127,11 +141,13 @@ const fakedb = [
 
     //Filter 1 Name, needs to be integrated into real database.
     const OnFilterName = (text) => {
-        setAllDb(fakedb.filter((o)=>{
+        setAllDb(alldb.filter((o)=>{
           return o.DriverText.includes(text);
         })
         )
       }
+
+
      
     //Will be replaced with real DB async
       useEffect(()=>{
@@ -152,8 +168,8 @@ const fakedb = [
                   {/* Maps out the fake database and assigns those values directly to the comps */}
 
                 {alldb.map(o=>{
-                    return <TaskCard namecolor={o.namecolor} vehiclecolor={o.vehiclecolour} DateText={o.DateText}HourText={o.HourTime} MinuteText={o.MinuteTime} MeridianText={o.MeridianTime} TitleText={o.TitleText} DriverText={o.DriverText} VehicleText={o.VehicleText}>
-                        {o.TitleText} - {o.VehicleText} - {o.DriverText} - {o.HourText} - {o.MinuteText} - {o.MeridianText} - {o.DateText}
+                    return <TaskCard namecolor={o.namecolor} vehiclecolor={o.vehiclecolour} DateText={o.DateText} HourText={o.HourText} MinuteText={o.MinuteText} MeridianText={o.MeridianText} TitleText={o.TitleText} DriverText={o.DriverText} VehicleText={o.VehicleText}>
+                        {o.TitleText} - {o.VehicleText} - {o.DriverText} - {o.DateText} - {o.HourText} - {o.MinuteText} - {o.MeridianText} 
                     </TaskCard>
                 })}
                 </div > 
@@ -166,14 +182,16 @@ const fakedb = [
                 </div>
 
                     {/* Controls / Fade in animation on the form */}
-
+                     
             <FadeIn delay={150} transitionDuration={1600}>
             <div className="card" style={{padding, left, top,position:'relative'}}>
        
             </div>
-            <AddTaskCard onPreview={HandleFormComplete} onPress={console.log(TitleText)}></AddTaskCard>
+            <AddTaskCard onFormComplete={HandlePost} onPreview={HandleFormComplete} onPress={console.log(TitleText)}></AddTaskCard>
+            
             </FadeIn>
             </div>
+            
             </FadeIn>
 }
 

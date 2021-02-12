@@ -413,7 +413,7 @@ display:flex;
 margin-top:25px;
 `;
 
-const AddTaskCard = ({onPreview, show, border, InputTitle1,InputPlaceholder1,InputTitle2,InputPlaceholder2,InputTitle3,InputPlaceholder3,}) => {
+const AddTaskCard = ({onPreview, show, border, InputTitle1,InputPlaceholder1,InputTitle2,InputPlaceholder2,InputTitle3,InputPlaceholder3,onFormComplete}) => {
 
     const [TitleText,setTitle] = useState("")
     const [HourTime,setHourTime] = useState("")
@@ -547,7 +547,7 @@ const AddTaskCard = ({onPreview, show, border, InputTitle1,InputPlaceholder1,Inp
                     <ButtonContainer onClick={()=>{
                         
                         onPreview({TitleText, compDate, DriverText, VehicleText, HourTime, MinuteTime, MeridianTime, ColourValue, VehicleNameColour})}}>
-                        <ButtonText>Create New Task</ButtonText>
+                        <ButtonText onClick={()=>{onFormComplete(TitleText, compDate, DriverText, VehicleText, HourTime, MinuteTime, MeridianTime, ColourValue, VehicleNameColour)}}>Create New Task</ButtonText>
                     </ButtonContainer>
                 </Buttondiv>
 
@@ -564,7 +564,8 @@ InputPlaceholder3:"Honda",
 show:true,
 onPreview:()=>{},
 namecolor:"#F8F8F8",
-border:"0px solid black"
+border:"0px solid black",
+onFormComplete:()=>{}
 }
 
 export default AddTaskCard;
