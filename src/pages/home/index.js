@@ -10,6 +10,7 @@ import Header from '../../comps/Header';
 import FilterBy from '../../comps/FilterBy'
 import FadeIn from 'react-fade-in';
 import AddTaskCard from '../../comps/AddTaskCard'
+import EditTaskCard from '../../comps/EditTaskCard'
 
 //This page emulates a mobile interface
 
@@ -129,6 +130,12 @@ const fakedb = [
         GetDB();
         }
 
+        const EditPost = async (TitleText, DateText, DriverText, VehicleText, HourText, MinuteText, MeridianText, namecolor, vehiclecolour) => {
+          var resp = await axios.patch("https://comp4130busybee.herokuapp.com/api/tasks/1", {TitleText:TitleText, DateText:DateText, DriverText:DriverText, VehicleText:VehicleText, HourText:HourText, MinuteText:MinuteText, MeridianText:MeridianText, namecolor:namecolor, vehiclecolour:vehiclecolour});
+          console.log("created", resp.data)
+          GetDB();
+          }
+
     //Filter 1 Vehicle, needs to be integrated into real database.
     const OnFilterVehicle = (text) => {
         //console.log(text, alldb);
@@ -159,8 +166,9 @@ const fakedb = [
     var padding = 0 + 'px';
     return <FadeIn><div>
     <div className="main">
+    
                 <Header></Header>
-               
+                
                 <FilterBy onFilterVehicle={OnFilterVehicle} onFilterName={OnFilterName}></FilterBy>
                 
               <div className="ScrollDiv">
@@ -172,6 +180,7 @@ const fakedb = [
                         {o.TitleText} - {o.VehicleText} - {o.DriverText} - {o.DateText} - {o.HourText} - {o.MinuteText} - {o.MeridianText} 
                     </TaskCard>
                 })}
+                <EditTaskCard onFormComplete={EditPost}/> 
                 </div > 
                 <div className="Button1">
                     <Button2  onClick={()=>{
@@ -180,9 +189,9 @@ const fakedb = [
            
                 </div>           
                 </div>
-
+                
                     {/* Controls / Fade in animation on the form */}
-                     
+                    
             <FadeIn delay={150} transitionDuration={1600}>
             <div className="card" style={{padding, left, top,position:'relative'}}>
        
@@ -191,7 +200,7 @@ const fakedb = [
             
             </FadeIn>
             </div>
-            
+          
             </FadeIn>
 }
 
