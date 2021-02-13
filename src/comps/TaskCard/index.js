@@ -162,7 +162,7 @@ const fakedb = [
 
 
 
-const TaskCard = ({onPreview, TitleText, TimeText, DriverText, VehicleText, DateText,fakedb, HourText,MinuteText,MeridianText, namecolor, vehiclecolor}) =>{
+const TaskCard = ({onPreview, TitleText, TimeText, DriverText, VehicleText, DateText,fakedb, HourText,MinuteText,MeridianText, namecolor, vehiclecolor, onDelete}) =>{
 
 
 
@@ -174,7 +174,7 @@ const TaskCard = ({onPreview, TitleText, TimeText, DriverText, VehicleText, Date
                     <Vehicle vehiclecolor={vehiclecolor}>{VehicleText}</Vehicle>
                 </FeatureDiv>
                 <Edit src={Image}/>
-                <Delete src={Image2}/>
+                <Delete onClick={onDelete} src={Image2}/>
             </Container>
 }
 
@@ -188,7 +188,9 @@ TaskCard.defaultProps = {
     DateText:"Monday",
     fakedb:fakedb,
     namecolor:"#d3d3d3",
-    vehiclecolor:"#d3d3d3"
+    vehiclecolor:"#d3d3d3",
+    onDelete:()=>{}
+
 }
 
 export default TaskCard;

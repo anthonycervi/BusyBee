@@ -93,6 +93,7 @@ position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 .div3{
@@ -104,3 +105,39 @@ position: relative;
   align-items: center;
   justify-content: center;
 }
+
+.LogoTitleDiv{
+  // background-color: yellow;
+  width: 30%;
+  height: 100px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: row;
+}
+
+.TitleDiv{
+  // background-color: green;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  font-size: 40px;
+  flex-direction: row;
+  font-family: Inter;
+font-style: normal;
+  
+}
+
+.LogoDiv{
+  // background-color: rgb(255, 0, 191);
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  
+  
+}
+

@@ -49,6 +49,7 @@ padding:10px;
 padding-top:20px;
 padding-left:20px;
 font-weight:600;
+font-size:24px;
 // background-color:blue;
 `;
 
@@ -434,7 +435,7 @@ const EditTaskCard = ({onPreview, show, border, InputTitle1,InputPlaceholder1,In
     
     return  <Container show={show}>
 
-                <Downarrow src={Image} />
+                {/* <Downarrow src={Image} /> */}
 
                 <TitleDiv>
                     <Title>Edit a current task</Title>
@@ -549,7 +550,7 @@ const EditTaskCard = ({onPreview, show, border, InputTitle1,InputPlaceholder1,In
                     <ButtonContainer onClick={()=>{
                         
                         onPreview({TitleText, compDate, DriverText, VehicleText, HourTime, MinuteTime, MeridianTime, ColourValue, VehicleNameColour})}}>
-                        <ButtonText onClick={()=>{onFormComplete(TitleText, compDate, DriverText, VehicleText, HourTime, MinuteTime, MeridianTime, ColourValue, VehicleNameColour)}}>Create New Task</ButtonText>
+                        <ButtonText onClick={()=>{onFormComplete(TitleText, compDate, DriverText, VehicleText, HourTime, MinuteTime, MeridianTime, ColourValue, VehicleNameColour)}}>Confirm</ButtonText>
                     </ButtonContainer>
                 </Buttondiv>
 

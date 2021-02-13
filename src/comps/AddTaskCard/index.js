@@ -49,6 +49,7 @@ padding:10px;
 padding-top:20px;
 padding-left:20px;
 font-weight:600;
+font-size:24px;
 // background-color:blue;
 `;
 
@@ -432,7 +433,7 @@ const AddTaskCard = ({onPreview, show, border, InputTitle1,InputPlaceholder1,Inp
     
     return  <Container show={show}>
 
-                <Downarrow src={Image} />
+                {/* <Downarrow src={Image} /> */}
 
                 <TitleDiv>
                     <Title>Add a new task</Title>
