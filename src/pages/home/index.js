@@ -164,44 +164,64 @@ const fakedb = [
     var left = 0 + 'px';
     var top = 0 + 'px';
     var padding = 0 + 'px';
-    return <FadeIn><div>
-    <div className="main">
-    
-                <Header></Header>
-                
-                <FilterBy onFilterVehicle={OnFilterVehicle} onFilterName={OnFilterName}></FilterBy>
-                
-              <div className="ScrollDiv">
-               
-                  {/* Maps out the fake database and assigns those values directly to the comps */}
-
-                {alldb.map(o=>{
-                    return <TaskCard namecolor={o.namecolor} vehiclecolor={o.vehiclecolour} DateText={o.DateText} HourText={o.HourText} MinuteText={o.MinuteText} MeridianText={o.MeridianText} TitleText={o.TitleText} DriverText={o.DriverText} VehicleText={o.VehicleText}>
-                        {o.TitleText} - {o.VehicleText} - {o.DriverText} - {o.DateText} - {o.HourText} - {o.MinuteText} - {o.MeridianText} 
-                    </TaskCard>
-                })}
-                <EditTaskCard onFormComplete={EditPost}/> 
-                </div > 
-                <div className="Button1">
-                    <Button2  onClick={()=>{
-                    ShowTask(true)
-                }}></Button2>
-           
-                </div>           
+    return    <div className="EntirePage">
+                <div className="div1">
+                <AddTaskCard onFormComplete={HandlePost} onPreview={HandleFormComplete} onPress={console.log(TitleText)} ></AddTaskCard>
                 </div>
+                <div className="div2">
+                <div className="main">
+                      <Header></Header>
+                      <FilterBy onFilterVehicle={OnFilterVehicle} onFilterName={OnFilterName}></FilterBy>
                 
-                    {/* Controls / Fade in animation on the form */}
-                    
-            <FadeIn delay={150} transitionDuration={1600}>
-            <div className="card" style={{padding, left, top,position:'relative'}}>
-       
-            </div>
-            <AddTaskCard onFormComplete={HandlePost} onPreview={HandleFormComplete} onPress={console.log(TitleText)}></AddTaskCard>
-            
-            </FadeIn>
-            </div>
-          
-            </FadeIn>
-}
+                      <div className="ScrollDiv">             
+                        {/* Maps out the fake database and assigns those values directly to the comps */}
+
+                        {alldb.map(o=>{
+                            return <TaskCard namecolor={o.namecolor} vehiclecolor={o.vehiclecolour} DateText={o.DateText} HourText={o.HourText} MinuteText={o.MinuteText} MeridianText={o.MeridianText} TitleText={o.TitleText} DriverText={o.DriverText} VehicleText={o.VehicleText}>
+                                {o.TitleText} - {o.VehicleText} - {o.DriverText} - {o.DateText} - {o.HourText} - {o.MinuteText} - {o.MeridianText} 
+                            </TaskCard>
+                        })}
+                      </div >
+                      {/* <div className="Button1">
+                          <Button2  onClick={()=>{
+                          ShowTask(true)
+                      }}></Button2>
+                      </div>            */}
+                    </div>
+                </div>
+                <div className="div3">
+                <EditTaskCard onFormComplete={EditPost} /> 
+                </div>
+              </div>
+    
+    // <div className="EntirePage"> 
+    //                 <div className="main">
+    //                   <Header></Header>
+    //                   <FilterBy onFilterVehicle={OnFilterVehicle} onFilterName={OnFilterName}></FilterBy>
+                
+    //                   <div className="ScrollDiv">             
+    //                     {/* Maps out the fake database and assigns those values directly to the comps */}
+
+    //                     {alldb.map(o=>{
+    //                         return <TaskCard namecolor={o.namecolor} vehiclecolor={o.vehiclecolour} DateText={o.DateText} HourText={o.HourText} MinuteText={o.MinuteText} MeridianText={o.MeridianText} TitleText={o.TitleText} DriverText={o.DriverText} VehicleText={o.VehicleText}>
+    //                             {o.TitleText} - {o.VehicleText} - {o.DriverText} - {o.DateText} - {o.HourText} - {o.MinuteText} - {o.MeridianText} 
+    //                         </TaskCard>
+    //                     })}
+    //                   </div >
+    //                   <div className="Button1">
+    //                       <Button2  onClick={()=>{
+    //                       ShowTask(true)
+    //                   }}></Button2>
+    //                   </div>           
+    //                 </div>
+                
+    //             <div className="AddTaskDiv">
+    //             <AddTaskCard onFormComplete={HandlePost} onPreview={HandleFormComplete} onPress={console.log(TitleText)} ></AddTaskCard>
+    //             </div>
+    //             <div className="EditTaskDiv">
+    //             <EditTaskCard onFormComplete={EditPost} /> 
+    //             </div>
+    //           </div>  
+              }
 
 export default Home;

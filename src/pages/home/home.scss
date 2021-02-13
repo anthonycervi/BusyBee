@@ -6,22 +6,24 @@
     // justify-content: center;
     min-width: 375px;
     max-width: 375px;
-    min-height: 812px;
+    min-height: 700px;
     // max-height: 812px;
     border-radius: 20px;
-    border: solid 2px;
-    border-color: rgb(238, 238, 238);
+    // border: solid 2px;
+    // border-color: rgb(71, 71, 71);
+    background-color: white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 3px 6px rgba(0, 0, 0, 0.2), 0px 4px 8px rgba(0, 0, 0, 0.08), 7px 1px 12px rgba(0, 0, 0, 0.04);
     // position: absolute;
 }
 
-.card {
-    transition: opacity 0.5s;
-    opacity: 1;
-  }
-  .card.hide {
-    opacity: 0;
-    pointer-events:none;
-  }
+// .card {
+//     transition: opacity 0.5s;
+//     opacity: 1;
+//   }
+//   .card.hide {
+//     opacity: 0;
+//     pointer-events:none;
+//   }
 
   .ScrollDiv{
     width: 100%;
@@ -31,9 +33,9 @@
     margin-top: 15px;
 }
 
-// .ScrollDiv::-webkit-scrollbar {
-//     display: none;
-//   }
+.ScrollDiv::-webkit-scrollbar {
+    display: none;
+  }
 
 .Button1{
   margin-top:15px;
@@ -45,4 +47,60 @@
   // margin-top:30px;
   // width: 100%;
 }
-  
+
+.EditTaskDiv{
+position: relative;
+}
+
+.AddTaskDiv{
+  position: absolute;
+  // left: 100px;
+}
+
+.EntirePage{
+  // align-items: center;
+  display: flex;
+  flex-direction: row;
+  // text-align: center;
+  // justify-content: center;
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  // min-width: 375px;
+  // max-width: 375px;
+  // min-height: 812px;
+  // max-height: 812px;
+  // border-radius: 20px;
+  // border: solid 2px;
+  // border-color: rgb(238, 238, 238);
+  // position: absolute;
+}
+
+.div1{
+  background-color: rgb(228, 228, 228);
+  width: 100vw;
+  min-width: 375px;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.div2{
+  background-color: rgb(228, 228, 228);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.div3{
+  background-color: rgb(228, 228, 228);
+  width: 100vw;
+  min-width: 375px;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
